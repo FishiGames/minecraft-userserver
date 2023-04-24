@@ -7,6 +7,7 @@ import lombok.Getter;
 import lombok.Setter;
 import lombok.experimental.Accessors;
 
+import java.util.Date;
 import java.util.UUID;
 
 @Accessors(chain = true)
@@ -31,6 +32,15 @@ public class UserEntity {
     @Setter
     @Column(columnDefinition = "longtext")
     private String signature;
+
+    @Getter
+    @Setter
+    @Column(columnDefinition = "date")
+    private Date expired;
+
+    public boolean isExpired() {
+        return expired == null || this.getExpired().getTime() <= new Date().getTime();
+    }
 
     public void setUniqueId(UUID uniqueId) {
         this.uniqueId = uniqueId.toString();

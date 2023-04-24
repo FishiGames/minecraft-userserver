@@ -12,7 +12,7 @@ public class UserService {
     private static final Gson GSON = new GsonBuilder().setPrettyPrinting().create();
 
     @Getter
-    public static UserService instance;
+    private static UserService instance;
     private final WebService webService;
 
     private String baseUrl;
