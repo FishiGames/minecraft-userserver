@@ -1,0 +1,16 @@
+services:
+  mariadb:
+    image: mariadb:10.7.8
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: userserver
+      MYSQL_USER: userserver
+      MYSQL_PASSWORD: userserver
+    ports:
+      - "3306:3306"
+    volumes:
+      - mariadb-db-data:/var/lib/mysql
+    command: [--wait_timeout=1800]
+
+volumes:
+  mariadb-db-data:
